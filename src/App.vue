@@ -2,7 +2,7 @@
   <div id="app" class="small-container">
     <h1>Employees</h1>
     <employee-form @add:employee="addEmployee" />
-    <employee-table　
+    <employee-table
       :employees="employees" 
       @delete:employee="deleteEmployee"
       @edit:employee="editEmployee"
@@ -13,7 +13,7 @@
 <script>
 import EmployeeTable from '@/components/EmployeeTable.vue'
 import EmployeeForm from '@/components/EmployeeForm.vue'
-import { async } from 'q';
+
 
 export default {
   name: 'app',
@@ -35,7 +35,7 @@ export default {
     async getEmployees() {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const data = await response.json
+        const data = await response.json()
         this.employees = data
       } catch (error) {
         console.error(error)
@@ -73,11 +73,11 @@ export default {
     async deleteEmployee(id) {
       try {
         await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-          method: 'DELETE'
-        })
-        this.employees = this.employees.filter(employee => employee.id !== id)
+          method: "DELETE"
+        });
+        this.employees = this.employees.filter(employee => employee.id !== id);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     }
   }
@@ -89,6 +89,10 @@ export default {
   button {
     background: #009435;
     border: 1px solid #009435;
+  }
+  button:focus {
+    background: blue;
+    border: 1px solid blue;
   }
 
   .small-container {
